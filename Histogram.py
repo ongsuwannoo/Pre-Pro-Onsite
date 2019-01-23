@@ -1,31 +1,34 @@
-""" Histogram """
-def main():
-    """ input """
-    cha = sorted(list(input()))
-    cha3 = ''
-    cha4 = []
-    count = []
-    for i in range(len(cha)):
-        cha1 = cha[i]
-        if cha1.isalpha():
-            cha2 = cha.count(cha1)
-            if cha[i] not in cha3:
-                print(cha[i]+":", cha2)
-                cha3 += cha[i]
-                cha4.append(cha[i])
-                count.append(cha2)
-    print(count)
-    print(cha4)
-    for i in range(max(count), 0, -1):
-        print("%02s"%i, end="")
-        for j in range(max(count)):
-            if count[j] == i:
-                print("  " + ("  " * j) + "*")
+''' VerticalHistogram '''
+def main(cha):
+    ''' for Histogram
+    Ex. InformationOfTechnology
 
-    for i in range(len(cha4)):
-        if i == 0:
-            print("    ", end="")
-        print(cha4[i], end=" ")
+    004                     *
+    003                   * *
+    002       *           * *
+    001 * * * * * * * * * * * * * * * * *
+        a c e f g h i l m n o r t y I O T
+    '''
+    dic, num = {}, 0
 
+    for i in cha:
+        if i != ' ' and i.isalpha():
+            dic[i] = cha.count(i)
+    sett = set(dic)
+    lis = sorted(list(sett))
+    # dic = cha count
+    # lis = cha
+    num = int(max(dic.items(), key=lambda x: x[1])[1])
+    # max(num)
+    for i in range(num, 0, -1):
+        print('%2d'%(i), end='  ') # 1
+        for j in lis:
+            if dic[j] >= i:
+                print('*', end=' ') # *
+            elif dic[j] < i:
+                print(' ', end=' ') # ' '
+        print()
+    print('    ', end='')
+    print(*lis) # a b c d
 
-main()
+main(input())

@@ -13,6 +13,8 @@ def main(row_1, colrow_12, col_2):
     num, unit_1, unit_2 = [], [], []
     result = [[0 for row in range(col_2)] for col in range(row_1)] # created unit
     # Matrix_A input
+    for i in result:
+        print(i)
     for _ in range(1, row_1+1):
         for i in range(1, colrow_12+1):
             num.append(int(input()))
