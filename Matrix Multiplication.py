@@ -17,24 +17,35 @@ def main(row_1, colrow_12, col_2):
         print(i)
     for _ in range(1, row_1+1):
         for i in range(1, colrow_12+1):
-            num.append(int(input()))
+            num.append(float(input()))
             if i == colrow_12: # End column A
                 unit_1.append(num)
                 num = []
+    for i in unit_1:
+        for j in i:
+            print(j, end=' ')
+        print()
     # Matrix_B input
     for _ in range(1, colrow_12+1):
         for i in range(1, col_2+1):
-            num.append(int(input()))
+            num.append(float(input()))
             if i == col_2: # End column B
                 unit_2.append(num)
                 num = []
+    for i in unit_2:
+        for j in i:
+            print(j, end=' ')
+        print()
+    print()
     # print(unit_1, unit_2)
     # Matrix Multiplication
     for i in range(row_1):
         for j in range(col_2):
             for k in range(colrow_12):
+                old = result[i][j]
                 result[i][j] += unit_1[i][k] * unit_2[k][j]
-                # print(result[i][j],'=', unit_1[i][k],'*', unit_2[k][j])
+                print('a', i, j, result[i][j],'=', old, "+", unit_1[i][k],'*', unit_2[k][j])
+    print()
     # print
     for i in range(row_1):
         for j in range(col_2):
